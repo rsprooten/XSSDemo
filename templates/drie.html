@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container theme-showcase" role="main">
+    <div class="jumbotron">
+    <h1>Lorem Ipsum</h1>
+        <hr />
+        <p>Lorem ipsum dolor sit amet, et facete intellegebat mel, vel eu veniam insolens incorrupte. Exerci docendi ex nam,omero elaboraret pri. Cu eleifend inciderint reformidans sea, conceptam interessetegere volumus voluptua cu. Ea his nominavi invenire, mittam propriae, eu exerci fierent eamur vivendum qui ad.
+
+        </p>
+        <hr />
+        {% for object in objects %}
+        <p>{{ object.naam }} schreef:<br />
+        {{ object.bericht|safe }}</p>
+        <hr />
+        {% endfor %}
+        <form  method="post" action=".">
+            <div class="form-group">
+            {% csrf_token %}
+            <table>
+            {{ form }}
+            <tr><th></th><td><input type="submit" class="btn btn-info" value="Submit Button"></td></tr>
+            </table>
+            </div>
+        </form>
+        <br />
+        <p align="center"><a href="{% url 'opdrachtdriereset' %}" class="btn btn-danger" role="button">RESET</a></p>
+    </div>
+</div>
+{% endblock %}
